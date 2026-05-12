@@ -224,7 +224,7 @@ bot.command("off", (ctx) => {
 
 /* ================= AUTO TIME SYSTEM ================= */
 
-bot.hears(/^\/time(\d+(\.\d+)?)$/, async (ctx) => {
+bot.hears(/^\/time(\d+)$/, async (ctx) => {
 
   if (ctx.from.id !== ADMIN_ID) {
     return ctx.reply("🚫 Admin only command");
@@ -232,26 +232,23 @@ bot.hears(/^\/time(\d+(\.\d+)?)$/, async (ctx) => {
 
   try {
 
-    const input =
-      ctx.match[1];
+    const minutes =
+      parseInt(ctx.match[1]);
 
-    const hours =
-      parseFloat(input);
-
-    if (isNaN(hours) || hours <= 0) {
+    if (isNaN(minutes) || minutes <= 0) {
       return ctx.reply("❌ Invalid time");
     }
 
-    /* ✅ OFF BOT */
+    /* ✅ BOT OFF */
 
     botRunning = false;
 
-    /* ⏰ CONVERT */
+    /* ⏰ MINUTES → MILLISECONDS */
 
     const ms =
-      hours * 60 * 60 * 1000;
+      minutes * 60 * 1000;
 
-    /* 🔄 CLEAR OLD TIMER */
+    /* 🔄 REMOVE OLD TIMER */
 
     if (autoOnTimer) {
       clearTimeout(autoOnTimer);
@@ -266,8 +263,8 @@ bot.hears(/^\/time(\d+(\.\d+)?)$/, async (ctx) => {
       ctx.reply(
 `✅ Bot Auto ON Successfully
 
-⏰ Time Finished:
-${input} Hour`
+⏰ OFF Time Finished:
+${minutes} Minute`
       ).catch(() => {});
 
     }, ms);
@@ -276,7 +273,7 @@ ${input} Hour`
 `⛔ Bot OFF Successfully
 
 ⏰ Auto ON After:
-${input} Hour`
+${minutes} Minute`
     );
 
   } catch (e) {
