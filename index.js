@@ -5,6 +5,9 @@ import gTTS from "gtts";
 import { BOT_TOKEN, GROUP_ID } from "./config.js";
 import { countries } from "./countries.js";
 
+/* ✅ BOT */
+const bot = new Telegraf(BOT_TOKEN);
+
 const ADMIN_ID = 8136997138;
 
 let botRunning = true;
