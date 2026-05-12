@@ -1,3 +1,6 @@
 export const BOT_TOKEN = "8627306223:AAGaJ80iHev6BpWCwP9nC6OPzLqLY7Tc5ic";
-export const GROUP_ID = "-1003820143618";
-export const GROUP_ID = "-1003864761366";
+
+export const GROUP_IDS = [
+  "-1003820143618",
+  "-1003864761366"
+];
