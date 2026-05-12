@@ -20,7 +20,7 @@ let slowModeTimer = null;
 let autoOnTimer = null;
 
 if (!fs.existsSync("./temp")) {
-  fs.mkdirSync("./temp");
+fs.mkdirSync("./temp");
 }
 const codes = JSON.parse(fs.readFileSync("./codes.json"));
 
@@ -33,24 +33,24 @@ let countryStart = Date.now();
 /* ✅ ENABLED COUNTRIES */
 
 let enabledCountries =
-  [...countries];
+[...countries];
 /* ================= TEXT ================= */
 
 function getLocalizedText(countryCode) {
 
 const texts = {
 
-"+39": "Il tuo codice di verifica è",  
+"+39": "Il tuo codice di verifica è",
 
-"+44": "Your verification code is",  
+"+44": "Your verification code is",
 
-"+81": "あなたの確認コードは",  
+"+81": "あなたの確認コードは",
 
-"+92": "آپ کا تصدیقی کوڈ ہے",  
+"+92": "آپ کا تصدیقی کوڈ ہے",
 
-"+968": "رمز التحقق الخاص بك هو",  
+"+968": "رمز التحقق الخاص بك هو",
 
-"+86": "您的验证码是",  
+"+86": "您的验证码是",
 
 "+974": "رمز التحقق الخاص بك هو",
 
@@ -86,44 +86,44 @@ return texts[countryCode] || "Your verification code is";
 /* ================= SPEECH ================= */
 
 function codeToSpeech(code) {
-  const words = {
-    "0": "zero","1": "one","2": "two","3": "three","4": "four",
-    "5": "five","6": "six","7": "seven","8": "eight","9": "nine"
-  };
+const words = {
+"0": "zero","1": "one","2": "two","3": "three","4": "four",
+"5": "five","6": "six","7": "seven","8": "eight","9": "nine"
+};
 
-  return code.toString().split("").map(d => words[d]).join(" ");
+return code.toString().split("").map(d => words[d]).join(" ");
 }
 
 /* ================= NUMBER ================= */
 
 function generateNumber(prefix) {
-  const last = Math.floor(1000 + Math.random() * 9000);
-  return `${prefix}***${last}`;
+const last = Math.floor(1000 + Math.random() * 9000);
+return ${prefix}***${last};
 }
 
 /* ================= DELAY ================= */
 
 function getDelay() {
 
-  /* 🐢 SLOW MODE */
+/* 🐢 SLOW MODE */
 
-  if (slowMode) {
+if (slowMode) {
 
-    const delays = [
-      7000,
-      10000,
-      15000
-    ];
+const delays = [    
+  7000,    
+  10000,    
+  15000    
+];    
 
-    return delays[
-      Math.floor(Math.random() * delays.length)
-    ];
+return delays[    
+  Math.floor(Math.random() * delays.length)    
+];
 
-  }
+}
 
-  /* ⚡ NORMAL MODE */
+/* ⚡ NORMAL MODE */
 
-  return 5000;
+return 5000;
 
 }
 
@@ -131,36 +131,36 @@ function getDelay() {
 
 function updateCountry() {
 
-  if (enabledCountries.length === 0) {
-    enabledCountries = [...countries];
-  }
+if (enabledCountries.length === 0) {
+enabledCountries = [...countries];
+}
 
-  const now = Date.now();
+const now = Date.now();
 
-  if (
-    now - countryStart >= 3600000
-  ) {
+if (
+now - countryStart >= 3600000
+) {
 
-    countryIndex =
-      (countryIndex + 1) %
-      enabledCountries.length;
+countryIndex =    
+  (countryIndex + 1) %    
+  enabledCountries.length;    
 
-    countryStart = now;
+countryStart = now;
 
-  }
+}
 
-  if (Math.random() < 0.5) {
+if (Math.random() < 0.5) {
 
-    countryIndex =
-      Math.floor(
-        Math.random() *
-        enabledCountries.length
-      );
+countryIndex =    
+  Math.floor(    
+    Math.random() *    
+    enabledCountries.length    
+  );
 
-  }
+}
 
-  currentCountry =
-    enabledCountries[countryIndex];
+currentCountry =
+enabledCountries[countryIndex];
 
 }
 
@@ -168,10 +168,10 @@ function updateCountry() {
 
 async function createVoice(code, file) {
 
-  const spokenCode = codeToSpeech(code);
-  const langText = getLocalizedText(currentCountry.code);
+const spokenCode = codeToSpeech(code);
+const langText = getLocalizedText(currentCountry.code);
 
-  const text =
+const text =
 `${langText}
 
 ${spokenCode}
@@ -180,42 +180,43 @@ I repeat
 
 ${spokenCode}`;
 
-  return new Promise((resolve, reject) => {
+return new Promise((resolve, reject) => {
 
-    const tts = new gTTS(text, currentCountry.lang);
+const tts = new gTTS(text, currentCountry.lang);    
 
-    tts.save(file, (err) => {
-      if (err) reject(err);
-      else resolve();
-    });
+tts.save(file, (err) => {    
+  if (err) reject(err);    
+  else resolve();    
+});
 
-  });
+});
 }
 
 /* ================= SEND ================= */
 
 async function sendCall() {
 
-  if (!botRunning) {
-    setTimeout(sendCall, 2000);
-    return;
-  }
+if (!botRunning) {
+setTimeout(sendCall, 2000);
+return;
+}
 
-  try {
+try {
 
-    updateCountry();
+updateCountry();    
 
-    const code = codes[codeIndex];
-    codeIndex = (codeIndex + 1) % codes.length;
+const code = codes[codeIndex];    
+codeIndex = (codeIndex + 1) % codes.length;    
 
-    const number = generateNumber(currentCountry.code);
-    const file = `./temp/${Date.now()}.mp3`;
+const number = generateNumber(currentCountry.code);    
+const file = `./temp/${Date.now()}.mp3`;    
 
-    await createVoice(code, file);
+await createVoice(code, file);    
 
-    const time = new Date().toLocaleString();
+const time = new Date().toLocaleString();    
 
-    const caption =
+const caption =
+
 `<b>📞 Telegram Call Alert 📞</b>
 ━━━━━━━━━━━━━━
 
@@ -230,122 +231,120 @@ async function sendCall() {
 
 <b><i>Powered by Smart Method 🤖</i></b>`;
 
- // 👉 MULTI GROUP SEND (NEW PART)
-    let sentMsg;
+const sentMsg = await bot.telegram.sendAudio(
+GROUP_ID,
+{ source: file },
+{
+caption,
+parse_mode: "HTML"
+}
+);
 
-    for (const GROUP_ID of GROUP_IDS) {
-      sentMsg = await bot.telegram.sendAudio(
-        GROUP_ID,
-        { source: file },
-        {
-          caption,
-          parse_mode: "HTML"
-        }
-      );
-    }
-    // ⏳ 5 মিনিট পরে মেসেজ ডিলিট
-    setTimeout(async () => {
-      try {
-        await bot.telegram.deleteMessage(GROUP_ID, sentMsg.message_id);
-      } catch (err) {
-        console.log("Delete Error:", err);
-      }
-    }, 300000);
+// ⏳ 5 মিনিট পরে মেসেজ ডিলিট    
+setTimeout(async () => {    
+  try {    
+    await bot.telegram.deleteMessage(GROUP_ID, sentMsg.message_id);    
+  } catch (err) {    
+    console.log("Delete Error:", err);    
+  }    
+}, 300000);    
 
-    // 🧹 3 সেকেন্ড পরে ফাইল ডিলিট
-    setTimeout(() => fs.remove(file), 3000);
+// 🧹 3 সেকেন্ড পরে ফাইল ডিলিট    
+setTimeout(() => fs.remove(file), 3000);
 
-  } catch (err) {
-    console.log("ERROR:", err);
-  }
+} catch (err) {
+console.log("ERROR:", err);
+}
 
-  setTimeout(sendCall, getDelay());
+setTimeout(sendCall, getDelay());
 }
 /* ================= COMMANDS ================= */
 
 bot.command("on", (ctx) => {
 
-  if (ctx.from.id !== ADMIN_ID) {
-    return ctx.reply("🚫 This command is only for admin");
-  }
+if (ctx.from.id !== ADMIN_ID) {
+return ctx.reply("🚫 This command is only for admin");
+}
 
-  botRunning = true;
+botRunning = true;
 
-  ctx.reply("✅ Bot is NOW ON");
+ctx.reply("✅ Bot is NOW ON");
 
 });
 
 bot.command("off", (ctx) => {
 
-  if (ctx.from.id !== ADMIN_ID) {
-    return ctx.reply("🚫 This command is only for admin");
-  }
+if (ctx.from.id !== ADMIN_ID) {
+return ctx.reply("🚫 This command is only for admin");
+}
 
-  botRunning = false;
+botRunning = false;
 
-  ctx.reply("⛔ Bot is NOW OFF");
+ctx.reply("⛔ Bot is NOW OFF");
 
 });
 
 /* ================= AUTO TIME SYSTEM ================= */
 
-bot.hears(/^\/time(\d+)$/, async (ctx) => {
+bot.hears(/^/time(\d+)$/, async (ctx) => {
 
-  if (ctx.from.id !== ADMIN_ID) {
-    return ctx.reply("🚫 Admin only command");
-  }
+if (ctx.from.id !== ADMIN_ID) {
+return ctx.reply("🚫 Admin only command");
+}
 
-  try {
+try {
 
-    const minutes =
-      parseInt(ctx.match[1]);
+const minutes =    
+  parseInt(ctx.match[1]);    
 
-    if (isNaN(minutes) || minutes <= 0) {
-      return ctx.reply("❌ Invalid time");
-    }
+if (isNaN(minutes) || minutes <= 0) {    
+  return ctx.reply("❌ Invalid time");    
+}    
 
-    /* ✅ BOT OFF */
+/* ✅ BOT OFF */    
 
-    botRunning = false;
+botRunning = false;    
 
-    /* ⏰ MINUTES → MILLISECONDS */
+/* ⏰ MINUTES → MILLISECONDS */    
 
-    const ms =
-      minutes * 60 * 1000;
+const ms =    
+  minutes * 60 * 1000;    
 
-    /* 🔄 REMOVE OLD TIMER */
+/* 🔄 REMOVE OLD TIMER */    
 
-    if (autoOnTimer) {
-      clearTimeout(autoOnTimer);
-    }
+if (autoOnTimer) {    
+  clearTimeout(autoOnTimer);    
+}    
 
-    /* ✅ AUTO ON */
+/* ✅ AUTO ON */    
 
-    autoOnTimer = setTimeout(() => {
+autoOnTimer = setTimeout(() => {    
 
-      botRunning = true;
+  botRunning = true;    
 
-      ctx.reply(
+  ctx.reply(
+
 `✅ Bot Auto ON Successfully
 
 ⏰ OFF Time Finished:
 ${minutes} Minute`
-      ).catch(() => {});
+).catch(() => {});
 
-    }, ms);
+}, ms);    
 
-    ctx.reply(
+ctx.reply(
+
 `⛔ Bot OFF Successfully
 
 ⏰ Auto ON After:
 ${minutes} Minute`
-    );
+);
 
-  } catch (e) {
+} catch (e) {
 
-    console.log(e);
+console.log(e);
 
-  }
+}
 
 });
 
@@ -353,123 +352,127 @@ ${minutes} Minute`
 
 bot.command("slow", async (ctx) => {
 
-  if (ctx.from.id !== ADMIN_ID) {
-    return ctx.reply("🚫 Admin only command");
-  }
+if (ctx.from.id !== ADMIN_ID) {
+return ctx.reply("🚫 Admin only command");
+}
 
-  try {
+try {
 
-    /* ✅ ENABLE */
+/* ✅ ENABLE */    
 
-    slowMode = true;
+slowMode = true;    
 
-    /* 🔄 REMOVE OLD TIMER */
+/* 🔄 REMOVE OLD TIMER */    
 
-    if (slowModeTimer) {
-      clearTimeout(slowModeTimer);
-    }
+if (slowModeTimer) {    
+  clearTimeout(slowModeTimer);    
+}    
 
-    /* ⏰ AUTO OFF AFTER 5 MIN */
+/* ⏰ AUTO OFF AFTER 5 MIN */    
 
-    slowModeTimer = setTimeout(() => {
+slowModeTimer = setTimeout(() => {    
 
-      slowMode = false;
+  slowMode = false;    
 
-      ctx.reply(
-        "⚡ Slow Mode Auto OFF"
-      ).catch(() => {});
+  ctx.reply(    
+    "⚡ Slow Mode Auto OFF"    
+  ).catch(() => {});    
 
-    }, 300000);
+}, 300000);    
 
-    ctx.reply(
+ctx.reply(
+
 `🐢 Slow Mode ON
 
 ⏰ Duration:
 5 Minute`
-    );
+);
 
-  } catch (e) {
+} catch (e) {
 
-    console.log(e);
+console.log(e);
 
-  }
+}
 
 });
 /* ================= COUNTRY SYSTEM ================= */
 
-bot.hears(/^\/country (.+)$/i, async (ctx) => {
+bot.hears(/^/country (.+)$/i, async (ctx) => {
 
-  if (ctx.from.id !== ADMIN_ID) {
-    return ctx.reply("🚫 Admin only command");
-  }
+if (ctx.from.id !== ADMIN_ID) {
+return ctx.reply("🚫 Admin only command");
+}
 
-  try {
+try {
 
-    const input = ctx.match[1].trim().toLowerCase();
+const input = ctx.match[1].trim().toLowerCase();    
 
-    const isOff = input.endsWith(" off");
+const isOff = input.endsWith(" off");    
 
-    const cleanName = isOff
-      ? input.replace(" off", "").trim()
-      : input;
+const cleanName = isOff    
+  ? input.replace(" off", "").trim()    
+  : input;    
 
-    /* 🔍 MATCH FULL NAME (LIKE United Kingdom, South Korea) */
-    const foundCountry = countries.find(c =>
-      c.name.toLowerCase() === cleanName
-    );
+/* 🔍 MATCH FULL NAME (LIKE United Kingdom, South Korea) */    
+const foundCountry = countries.find(c =>    
+  c.name.toLowerCase() === cleanName    
+);    
 
-    if (!foundCountry) {
-      return ctx.reply(
+if (!foundCountry) {    
+  return ctx.reply(
+
 `❌ Country Not Found
 
 Example:
 /country Pakistan
 /country United Kingdom
 /country South Korea off`
-      );
-    }
+);
+}
 
-    /* ❌ OFF */
-    if (isOff) {
+/* ❌ OFF */    
+if (isOff) {    
 
-      enabledCountries = enabledCountries.filter(
-        c => c.name !== foundCountry.name
-      );
+  enabledCountries = enabledCountries.filter(    
+    c => c.name !== foundCountry.name    
+  );    
 
-      return ctx.reply(
+  return ctx.reply(
+
 `⛔ Country OFF
 
 🌍 ${foundCountry.flag} ${foundCountry.name}`
-      );
-    }
+);
+}
 
-    /* ✅ ON */
-    const exists = enabledCountries.find(
-      c => c.name === foundCountry.name
-    );
+/* ✅ ON */    
+const exists = enabledCountries.find(    
+  c => c.name === foundCountry.name    
+);    
 
-    if (!exists) {
-      enabledCountries.push(foundCountry);
-    }
+if (!exists) {    
+  enabledCountries.push(foundCountry);    
+}    
 
-    return ctx.reply(
+return ctx.reply(
+
 `✅ Country ON
 
 🌍 ${foundCountry.flag} ${foundCountry.name}`
-    );
+);
 
-  } catch (e) {
-    console.log(e);
-  }
+} catch (e) {
+console.log(e);
+}
 });
 
 /* ================= START ================= */
 
 bot.start((ctx) => {
 
-  ctx.reply(
-    "👋 Welcome to Ornag Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: Orange Panel Call Recording Generator\n🔢 Feature: OTP Voice To Mp3 System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
-  );
+ctx.reply(
+"👋 Welcome to Ornag Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: Orange Panel Call Recording Generator\n🔢 Feature: OTP Voice To Mp3 System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
+);
 
 });
 
@@ -483,19 +486,19 @@ console.log("🤖 Bot Started...");
 
 setInterval(() => {
 
-  slowMode = true;
+slowMode = true;
 
-  console.log("🐢 AUTO SLOW MODE ON");
+console.log("🐢 AUTO SLOW MODE ON");
 
-  /* ⏰ AUTO OFF AFTER 5 MIN */
+/* ⏰ AUTO OFF AFTER 5 MIN */
 
-  setTimeout(() => {
+setTimeout(() => {
 
-    slowMode = false;
+slowMode = false;    
 
-    console.log("⚡ AUTO SLOW MODE OFF");
+console.log("⚡ AUTO SLOW MODE OFF");
 
-  }, 300000);
+}, 300000);
 
 }, 7200000);
 
