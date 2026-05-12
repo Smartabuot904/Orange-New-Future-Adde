@@ -3,77 +3,77 @@ export const countries = [
     name: "Italy",
     code: "+39",
     flag: "🇮🇹",
-    lang: ""
+    lang: "it"
   },
 
   {
     name: "United Kingdom",
     code: "+44",
     flag: "🇬🇧",
-    lang: ""
+    lang: "en"
   },
 
   {
     name: "Japan",
     code: "+81",
     flag: "🇯🇵",
-    lang: ""
+    lang: "ja"
   },
 
   {
     name: "Pakistan",
     code: "+92",
     flag: "🇵🇰",
-    lang: ""
+    lang: "in"
   },
 
   {
     name: "Oman",
     code: "+968",
     flag: "🇴🇲",
-    lang: ""
+    lang: "ar"
   },
 
   {
     name: "China",
     code: "+86",
     flag: "🇨🇳",
-    lang: ""
+    lang: "zh-CN"
   },
 
   {
     name: "Qatar",
     code: "+974",
     flag: "🇶🇦",
-    lang: ""
+    lang: "ar"
   },
 
   {
     name: "Bahrain",
     code: "+973",
     flag: "🇧🇭",
-    lang: ""
+    lang: "ar"
   },
 
   {
     name: "Norway",
     code: "+47",
     flag: "🇳🇴",
-    lang: ""
+    lang: "no"
   },
 
   {
     name: "Indonesia",
     code: "+62",
     flag: "🇮🇩",
-    lang: ""
+    lang: "id"
   },
 
   {
     name: "Singapore",
     code: "+65",
     flag: "🇸🇬",
-    lang: ""
+    lang: "en"
   },
 
   {
