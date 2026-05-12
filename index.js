@@ -230,15 +230,19 @@ async function sendCall() {
 
 <b><i>Powered by Smart Method 🤖</i></b>`;
 
-const sentMsg = await bot.telegram.sendAudio(
-      GROUP_ID,
-      { source: file },
-      {
-        caption,
-        parse_mode: "HTML"
-      }
-    );
+ // 👉 MULTI GROUP SEND (NEW PART)
+    let sentMsg;
 
+    for (const GROUP_ID of GROUP_IDS) {
+      sentMsg = await bot.telegram.sendAudio(
+        GROUP_ID,
+        { source: file },
+        {
+          caption,
+          parse_mode: "HTML"
+        }
+      );
+    }
     // ⏳ 5 মিনিট পরে মেসেজ ডিলিট
     setTimeout(async () => {
       try {
