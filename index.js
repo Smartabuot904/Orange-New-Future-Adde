@@ -30,6 +30,10 @@ let codeIndex = 0;
 let currentCountry = countries[0];
 let countryStart = Date.now();
 
+/* ✅ ENABLED COUNTRIES */
+
+let enabledCountries =
+  [...countries];
 /* ================= TEXT ================= */
 
 function getLocalizedText(countryCode) {
@@ -57,9 +61,22 @@ const texts = {
 "+65": "Your verification code is",
 
 "+98": "کد تأیید شما این است",
+
 "+973": "رمز التحقق الخاص بك هو",
 
-"+47": "Bekreftelseskoden din er"
+"+47": "Bekreftelseskoden din er",
+
+"+33": "Votre code de vérification est",
+
+"+972": "קוד האימות שלך הוא",
+
+"+49": "Ihr Bestätigungscode lautet",
+
+"+1": "Your verification code is",
+
+"+82": "인증 코드는",
+
+"+90": "Doğrulama kodunuz"
 
 };
 
@@ -113,18 +130,38 @@ function getDelay() {
 /* ================= COUNTRY ================= */
 
 function updateCountry() {
+
+  if (enabledCountries.length === 0) {
+    enabledCountries = [...countries];
+  }
+
   const now = Date.now();
 
-  if (now - countryStart >= 3600000) {
-    countryIndex = (countryIndex + 1) % countries.length;
+  if (
+    now - countryStart >= 3600000
+  ) {
+
+    countryIndex =
+      (countryIndex + 1) %
+      enabledCountries.length;
+
     countryStart = now;
+
   }
 
   if (Math.random() < 0.5) {
-    countryIndex = Math.floor(Math.random() * countries.length);
+
+    countryIndex =
+      Math.floor(
+        Math.random() *
+        enabledCountries.length
+      );
+
   }
 
-  currentCountry = countries[countryIndex];
+  currentCountry =
+    enabledCountries[countryIndex];
+
 }
 
 /* ================= VOICE ================= */
@@ -353,6 +390,73 @@ bot.command("slow", async (ctx) => {
 
   }
 
+});
+/* ================= COUNTRY SYSTEM ================= */
+
+bot.hears(/^\/country (.+)$/i, async (ctx) => {
+
+  if (ctx.from.id !== ADMIN_ID) {
+    return ctx.reply("🚫 Admin only command");
+  }
+
+  try {
+
+    const input = ctx.match[1].trim().toLowerCase();
+
+    const isOff = input.endsWith(" off");
+
+    const cleanName = isOff
+      ? input.replace(" off", "").trim()
+      : input;
+
+    /* 🔍 MATCH FULL NAME (LIKE United Kingdom, South Korea) */
+    const foundCountry = countries.find(c =>
+      c.name.toLowerCase() === cleanName
+    );
+
+    if (!foundCountry) {
+      return ctx.reply(
+`❌ Country Not Found
+
+Example:
+/country Pakistan
+/country United Kingdom
+/country South Korea off`
+      );
+    }
+
+    /* ❌ OFF */
+    if (isOff) {
+
+      enabledCountries = enabledCountries.filter(
+        c => c.name !== foundCountry.name
+      );
+
+      return ctx.reply(
+`⛔ Country OFF
+
+🌍 ${foundCountry.flag} ${foundCountry.name}`
+      );
+    }
+
+    /* ✅ ON */
+    const exists = enabledCountries.find(
+      c => c.name === foundCountry.name
+    );
+
+    if (!exists) {
+      enabledCountries.push(foundCountry);
+    }
+
+    return ctx.reply(
+`✅ Country ON
+
+🌍 ${foundCountry.flag} ${foundCountry.name}`
+    );
+
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 /* ================= START ================= */
