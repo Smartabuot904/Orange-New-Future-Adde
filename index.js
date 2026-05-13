@@ -277,21 +277,11 @@ bot.command("off", (ctx) => {
     return ctx.reply("🚫 This command is only for admin");
   }
 
-  enabledCountries = [];
+  botRunning = false;
 
-  ctx.reply(
-`⛔ All Countries OFF
-
-Use:
-/country Pakistan
-/country France
-/country Japan
-
-To start again`
-  );
+  ctx.reply("⛔ Bot is NOW OFF");
 
 });
-
 /* ================= AUTO TIME SYSTEM ================= */
 
 bot.hears(/^\/time(\d+)$/, async (ctx) => {
