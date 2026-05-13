@@ -94,7 +94,7 @@ export const countries = [
     name: "Israel",
     code: "+972",
     flag: "🇮🇱",
-    lang: "he"
+    lang: "iw"
   },
 
   {
