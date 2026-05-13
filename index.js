@@ -486,7 +486,7 @@ Example:
 bot.start((ctx) => {
 
   ctx.reply(
-    "👋 Welcome to Ornag Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: Orange Panel Call Recording Generator\n🔢 Feature: OTP Voice To Mp3 System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
+    "👋 Welcome to Ornag Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: China Panel Call Recording System\n🔢 Feature: OTP Voice Recovered System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
   );
 
 });
