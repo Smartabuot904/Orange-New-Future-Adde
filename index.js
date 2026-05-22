@@ -234,7 +234,7 @@ async function sendCall() {
 ┃🔐 <b>Access:</b> <code>➤ New China Panel♻️</code>
 
 ┃⏱ <b>Duration:</b> ➤ 15 Seconds
- ╰━━━━━━━━━━━━━━━╯
+ ╰━━━━━━━━━━━━━━━━╯
 ⚡ <b>Mode:</b> <b>Call To Music Generator</b> — <a href="https://t.me/+2R-AXlxNPWthNGFh">Click Here to join</a>
 
 <b><i>Powered by Smart Method 🤖</i></b>`;
