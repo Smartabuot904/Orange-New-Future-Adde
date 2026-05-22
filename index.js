@@ -226,7 +226,6 @@ async function sendCall() {
 `<b>╭━📡Voice Call Alert📡━╮ </b>
 
 ┃⏰ <b>Time:</b> ${time}
-
 ┃🌍 <b>Country:</b> ${currentCountry.flag} ${currentCountry.name}
 
 ┃☎️ <b>Number:</b> <code>${number}</code>
@@ -236,7 +235,6 @@ async function sendCall() {
 ┃⏱ <b>Duration:</b> ➤ 15 Seconds
  ╰━━━━━━━━━━━━━━━━╯
 ⚡ <b>Mode:</b> <b>Call To Music Generator</b> — <a href="https://t.me/+2R-AXlxNPWthNGFh">Click Here to join</a>
-
 <b><i>Powered by Smart Method 🤖</i></b>`;
 
 const sentMsg = await bot.telegram.sendAudio(
