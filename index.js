@@ -223,16 +223,18 @@ async function sendCall() {
 
   const time = new Date().toLocaleString();
     const caption =
-`<b>📞 Telegram Call Alert 📞</b>
-━━━━━━━━━━━━━━
+`<b>╭━━━ 📡 Incoming Voice Call📡 ━━━╮ </b>
 
-⏰ <b>Time:</b> ${time}
-🌍 <b>Country:</b> ${currentCountry.flag} ${currentCountry.name}
-☎️ <b>Number:</b> <code>${number}</code>
-🔢 <b>Code:</b> <code>New-Panel-Comin♻️</code>
-⏱ <b>Duration:</b> 24s
-━━━━━━━━━━━━━━
+┃⏰ <b>Time:</b> ${time}
 
+┃🌍 <b>Country:</b> ${currentCountry.flag} ${currentCountry.name}
+
+┃☎️ <b>Number:</b> <code>${number}</code>
+
+┃🔐 <b>Access:</b> <code>➤ New China Panel♻️</code>
+
+┃⏱ <b>Duration:</b> ➤ 15 Seconds
+ ╰━━━━━━━━━━━━━━━━━━━━━╯
 ⚡ <b>Mode:</b> <b>Call To Music Generator</b> — <a href="https://t.me/+2R-AXlxNPWthNGFh">Click Here to join</a>
 
 <b><i>Powered by Smart Method 🤖</i></b>`;
