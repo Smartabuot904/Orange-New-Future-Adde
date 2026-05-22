@@ -223,7 +223,7 @@ async function sendCall() {
 
   const time = new Date().toLocaleString();
     const caption =
-`<b>╭━📡Incoming Voice Call📡━╮ </b>
+`<b>╭━📡Voice Call Alert📡━╮ </b>
 
 ┃⏰ <b>Time:</b> ${time}
 
