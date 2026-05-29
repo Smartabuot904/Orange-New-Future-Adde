@@ -52,6 +52,66 @@ const texts = {
 
 "+86": "您的验证码是",  
 
+  "+91": "आपका सत्यापन कोड है",
+
+"+880": "আপনার ভেরিফিকেশন কোড হলো",
+
+"+971": "رمز التحقق الخاص بك هو",
+
+"+60": "Kod pengesahan anda ialah",
+
+"+66": "รหัสยืนยันของคุณคือ",
+
+"+7": "Ваш код подтверждения",
+
+"+34": "Su código de verificación es",
+
+"+55": "Seu código de verificação é",
+
+"+20": "رمز التحقق الخاص بك هو",
+
+"+93": "کد تأیید شما این است",
+
+"+212": "رمز التحقق الخاص بك هو",
+
+"+31": "Uw verificatiecode is",
+
+"+46": "Din verifieringskod är",
+
+"+41": "Ihr Bestätigungscode lautet",
+  
+  "+965": "رمز التحقق الخاص بك هو",
+
+"+216": "رمز التحقق الخاص بك هو",
+
+"+977": "तपाईंको प्रमाणीकरण कोड हो",
+
+"+964": "رمز التحقق الخاص بك هو",
+
+"+998": "Tasdiqlash kodingiz",
+
+"+84": "Mã xác minh của bạn là",
+
+"+94": "ඔබගේ තහවුරු කිරීමේ කේතය",
+
+"+966": "رمز التحقق الخاص بك هو",
+
+"+213": "رمز التحقق الخاص بك هو",
+
+"+263": "Your verification code is",
+
+"+592": "Your verification code is",
+
+"+249": "رمز التحقق الخاص بك هو",
+
+"+234": "Your verification code is",
+
+"+43": "Ihr Bestätigungscode lautet",
+
+"+63": "Your verification code is",
+
+"+52": "Su código de verificación es",
+  
 "+974": "رمز التحقق الخاص بك هو",
 
 "+62": "Kode verifikasi Anda adalah",
@@ -80,7 +140,7 @@ const texts = {
 
 };
 
-return texts[countryCode] || "Your verification code is";
+return texts[countryCode] || "Hello Your verification code is";
 }
 
 /* ================= SPEECH ================= */
@@ -224,6 +284,7 @@ async function sendCall() {
   const time = new Date().toLocaleString();
     const caption =
 `<b>╭━📡Voice Call Alert📡━╮ </b>
+━━━━━TELEGRAM━━━━━
 
 ┃⏰ <b>Time:</b> ${time}
 ┃🌍 <b>Country:</b> ${currentCountry.flag} ${currentCountry.name}
@@ -486,7 +547,7 @@ Example:
 bot.start((ctx) => {
 
   ctx.reply(
-    "👋 Welcome to Ornag Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: China Panel Call Recording System\n🔢 Feature: OTP Voice Recovered System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
+    "👋 Welcome to China Call Bot 🤖✨\n\n🔥 Status: Online\n🌍 System: China Panel Call Recording System\n🔢 Feature: OTP Voice Recovered System\n\n⚡ Commands:\n▶ /on - Start bot (Admin only)\n⛔ /off - Stop bot (Admin only)\n\n🚀 Enjoy your system!"
   );
 
 });
