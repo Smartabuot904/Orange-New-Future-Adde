@@ -773,32 +773,22 @@ bot.start((ctx) => {
 bot.launch();
 
 console.log("🤖 Bot Started...");
+startAutoSlowMode();
 
 /* ================= AUTO RANDOM SLOW ================= */
 
-function startRandomSlowMode() {
+function startAutoSlowMode() {
 
-  const randomTimes = [
-    15,
-    25,
-    35
-  ];
+  if (autoSlowInterval) {
+    clearInterval(autoSlowInterval);
+  }
 
-  const randomMinute =
-    randomTimes[
-      Math.floor(Math.random() * randomTimes.length)
-    ];
+  autoSlowInterval = setInterval(() => {
 
-  const randomMs =
-    randomMinute * 60 * 1000;
-
-  console.log(
-    `⏰ Next Slow Mode After ${randomMinute} Minutes`
-  );
-
-  setTimeout(() => {
+    if (!botRunning) return;
 
     slowMode = true;
+    fastMode = false;
 
     console.log("🐢 AUTO SLOW MODE ON");
 
@@ -808,15 +798,11 @@ function startRandomSlowMode() {
 
       console.log("⚡ AUTO SLOW MODE OFF");
 
-      startRandomSlowMode();
-
     }, 300000);
 
-  }, randomMs);
+  }, 7200000);
 
 }
-
-startRandomSlowMode();
 
 /* ================= LOOP ================= */
 
