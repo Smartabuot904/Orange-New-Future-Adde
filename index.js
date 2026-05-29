@@ -126,7 +126,108 @@ const texts = {
 "+52": "Su código de verificación es",
   
 "+974": "رمز التحقق الخاص بك هو",
+  "+27": "Your verification code is",
 
+"+54": "Your verification code is",
+
+"+57": "Your verification code is",
+
+"+51": "Your verification code is",
+
+"+56": "Your verification code is",
+
+"+351": "Your verification code is",
+
+"+32": "Your verification code is",
+
+"+45": "Your verification code is",
+
+"+358": "Your verification code is",
+
+"+30": "Your verification code is",
+
+"+48": "Your verification code is",
+
+"+40": "Your verification code is",
+
+"+380": "Your verification code is",
+
+"+254": "Your verification code is",
+
+"+255": "Your verification code is",
+
+"+256": "Your verification code is",
+
+"+64": "Your verification code is",
+
+"+61": "Your verification code is",
+
+"+353": "Your verification code is",
+
+"+420": "Your verification code is",
+
+"+36": "Your verification code is",
+
+"+385": "Your verification code is",
+
+"+381": "Your verification code is",
+
+"+962": "Your verification code is",
+
+"+375": "Your verification code is",
+
+"+976": "Your verification code is",
+
+"+855": "Your verification code is",
+
+"+856": "Your verification code is",
+
+"+95": "Your verification code is",
+
+"+967": "Your verification code is",
+
+"+963": "Your verification code is",
+
+"+970": "Your verification code is",
+
+"+218": "Your verification code is",
+
+"+237": "Your verification code is",
+
+"+233": "Your verification code is",
+
+"+221": "Your verification code is",
+
+"+244": "Your verification code is",
+
+"+258": "Your verification code is",
+
+"+261": "Your verification code is",
+
+"+595": "Your verification code is",
+
+"+598": "Your verification code is",
+
+"+591": "Your verification code is",
+
+"+58": "Your verification code is",
+
+"+53": "Your verification code is",
+
+"+354": "Your verification code is",
+
+"+352": "Your verification code is",
+
+"+421": "Your verification code is",
+
+"+386": "Your verification code is",
+
+"+372": "Your verification code is",
+
+"+371": "Your verification code is",
+
+"+370": "Your verification code is"
+  
 "+62": "Kode verifikasi Anda adalah",
 
 "+251": "የማረጋገጫ ኮድዎ ይህ ነው",
