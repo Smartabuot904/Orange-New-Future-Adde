@@ -226,7 +226,7 @@ const texts = {
 
 "+371": "Your verification code is",
 
-"+370": "Your verification code is"
+"+370": "Your verification code is",
   
 "+62": "Kode verifikasi Anda adalah",
 
