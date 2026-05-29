@@ -539,7 +539,11 @@ bot.hears(/^\/time(\d+)$/, async (ctx) => {
   }
 
   try {
+botRunning = true;
 
+if (!autoSlowInterval) {
+  startAutoSlowMode();
+  }
     const minutes =
       parseInt(ctx.match[1]);
 
