@@ -178,14 +178,30 @@ function generateNumber(prefix) {
 
 function getDelay() {
 
+  /* ⚡ FAST MODE */
+
+  if (fastMode) {
+
+    const delays = [
+      1000,
+      1500,
+      2000
+    ];
+
+    return delays[
+      Math.floor(Math.random() * delays.length)
+    ];
+
+  }
+
   /* 🐢 SLOW MODE */
 
   if (slowMode) {
 
     const delays = [
-      7000,
-      10000,
-      15000
+      12000,
+      18000,
+      25000
     ];
 
     return delays[
@@ -196,7 +212,15 @@ function getDelay() {
 
   /* ⚡ NORMAL MODE */
 
-  return 5000;
+  const normalDelays = [
+    4000,
+    5000,
+    6000
+  ];
+
+  return normalDelays[
+    Math.floor(Math.random() * normalDelays.length)
+  ];
 
 }
 
