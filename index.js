@@ -474,8 +474,10 @@ bot.command("on", (ctx) => {
 
   botRunning = true;
 
-  /* ✅ ALL COUNTRY ON AGAIN */
-  enabledCountries = [...countries];
+startAutoSlowMode();
+
+/* ✅ ALL COUNTRY ON AGAIN */
+enabledCountries = [...countries];
 
   ctx.reply(
 `✅ Bot Fully ON
@@ -491,17 +493,40 @@ bot.command("off", (ctx) => {
     return ctx.reply("🚫 This command is only for admin");
   }
 
+  botRunning = false;
+
   enabledCountries = [];
 
+  slowMode = false;
+  fastMode = false;
+
+  if (slowModeTimer) {
+    clearTimeout(slowModeTimer);
+  }
+
+  if (fastModeTimer) {
+    clearTimeout(fastModeTimer);
+  }
+
+  if (autoOnTimer) {
+    clearTimeout(autoOnTimer);
+  }
+
+  if (autoSlowInterval) {
+    clearInterval(autoSlowInterval);
+    autoSlowInterval = null;
+  }
+
   ctx.reply(
-`⛔ All Countries OFF
+`⛔ BOT FULLY OFF
 
-Use:
-/country Pakistan
-/country France
-/country Japan
+❌ All Systems Disabled
+❌ All Countries Disabled
+❌ Auto Slow OFF
+❌ Fast Mode OFF
+❌ Slow Mode OFF
 
-To start again`
+✅ Bot Will Stay OFF Until /on`
   );
 
 });
