@@ -11,18 +11,30 @@ const bot = new Telegraf(BOT_TOKEN);
 const ADMIN_ID = 8136997138;
 
 let botRunning = true;
+
 /* 🐢 SLOW MODE */
 
 let slowMode = false;
 
 let slowModeTimer = null;
+
+/* ⚡ FAST MODE */
+
+let fastMode = false;
+
+let fastModeTimer = null;
+
 /* ⏰ AUTO ON TIMER */
+
 let autoOnTimer = null;
 
 if (!fs.existsSync("./temp")) {
   fs.mkdirSync("./temp");
 }
-const codes = JSON.parse(fs.readFileSync("./codes.json"));
+
+const codes = JSON.parse(
+  fs.readFileSync("./codes.json")
+);
 
 let countryIndex = 0;
 let codeIndex = 0;
@@ -32,8 +44,9 @@ let countryStart = Date.now();
 
 /* ✅ ENABLED COUNTRIES */
 
-let enabledCountries =
-  [...countries];
+let enabledCountries = [
+  ...countries
+];
 /* ================= TEXT ================= */
 
 function getLocalizedText(countryCode) {
