@@ -539,11 +539,7 @@ bot.hears(/^\/time(\d+)$/, async (ctx) => {
   }
 
   try {
-botRunning = true;
-
-if (!autoSlowInterval) {
-  startAutoSlowMode();
-  }
+    
     const minutes =
       parseInt(ctx.match[1]);
 
@@ -775,7 +771,11 @@ Example:
     if (!exists) {
       enabledCountries.push(foundCountry);
     }
+botRunning = true;
 
+if (!autoSlowInterval) {
+  startAutoSlowMode();
+}
     return ctx.reply(
 `✅ Country ON
 
