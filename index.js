@@ -511,6 +511,78 @@ bot.command("slow", async (ctx) => {
   }
 
 });
+/* ================= FAST MODE ================= */
+
+bot.command("fast", async (ctx) => {
+
+  if (ctx.from.id !== ADMIN_ID) {
+    return ctx.reply("🚫 Admin only command");
+  }
+
+  try {
+
+    fastMode = true;
+    slowMode = false;
+
+    if (fastModeTimer) {
+      clearTimeout(fastModeTimer);
+    }
+
+    fastModeTimer = setTimeout(() => {
+
+      fastMode = false;
+
+      ctx.reply(
+        "⚡ Fast Mode Auto OFF"
+      ).catch(() => {});
+
+    }, 300000);
+
+    ctx.reply(
+`⚡ FAST MODE ON
+
+🚀 Super Fast Sending Started
+
+⏰ Duration:
+5 Minute`
+    );
+
+  } catch (e) {
+
+    console.log(e);
+
+  }
+
+});
+/* ================= NORMAL MODE ================= */
+
+bot.command("normal", async (ctx) => {
+
+  if (ctx.from.id !== ADMIN_ID) {
+    return ctx.reply("🚫 Admin only command");
+  }
+
+  try {
+
+    fastMode = false;
+    slowMode = false;
+
+    ctx.reply(
+`✅ NORMAL MODE ON
+
+⚡ Fast OFF
+🐢 Slow OFF
+
+🚀 System Back To Normal`
+    );
+
+  } catch (e) {
+
+    console.log(e);
+
+  }
+
+});
 /* ================= COUNTRY SYSTEM ================= */
 
 bot.hears(/^\/country (.+)$/i, async (ctx) => {
