@@ -579,7 +579,9 @@ bot.command("slow", async (ctx) => {
     /* ✅ ENABLE */
 
     slowMode = true;
-
+    
+fastMode = false;
+    
     /* 🔄 REMOVE OLD TIMER */
 
     if (slowModeTimer) {
@@ -599,11 +601,14 @@ bot.command("slow", async (ctx) => {
     }, 300000);
 
     ctx.reply(
-`🐢 Slow Mode ON
+`🐢 SLOW MODE ON
+
+⚡ Fast Mode OFF
+🐢 Slow Mode Activated
 
 ⏰ Duration:
 5 Minute`
-    );
+);
 
   } catch (e) {
 
