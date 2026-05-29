@@ -667,25 +667,49 @@ bot.launch();
 
 console.log("🤖 Bot Started...");
 
-/* ================= AUTO SLOW ================= */
+/* ================= AUTO RANDOM SLOW ================= */
 
-setInterval(() => {
+function startRandomSlowMode() {
 
-  slowMode = true;
+  const randomTimes = [
+    15,
+    25,
+    35
+  ];
 
-  console.log("🐢 AUTO SLOW MODE ON");
+  const randomMinute =
+    randomTimes[
+      Math.floor(Math.random() * randomTimes.length)
+    ];
 
-  /* ⏰ AUTO OFF AFTER 5 MIN */
+  const randomMs =
+    randomMinute * 60 * 1000;
+
+  console.log(
+    `⏰ Next Slow Mode After ${randomMinute} Minutes`
+  );
 
   setTimeout(() => {
 
-    slowMode = false;
+    slowMode = true;
 
-    console.log("⚡ AUTO SLOW MODE OFF");
+    console.log("🐢 AUTO SLOW MODE ON");
 
-  }, 300000);
+    setTimeout(() => {
 
-}, 7200000);
+      slowMode = false;
+
+      console.log("⚡ AUTO SLOW MODE OFF");
+
+      startRandomSlowMode();
+
+    }, 300000);
+
+  }, randomMs);
+
+}
+
+startRandomSlowMode();
 
 /* ================= LOOP ================= */
 
