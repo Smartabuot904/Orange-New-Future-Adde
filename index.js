@@ -169,66 +169,80 @@ const texts = {
 
 "+36": "Your verification code is",
 
-"+385": "Your verification code is",
+"+39": "Il tuo codice di verifica è",
 
-"+381": "Your verification code is",
+"+44": "Your verification code is",
 
-"+962": "Your verification code is",
+"+81": "あなたの確認コードは",
 
-"+375": "Your verification code is",
+"+92": "آپ کا تصدیقی کوڈ ہے",
 
-"+976": "Your verification code is",
+"+968": "رمز التحقق الخاص بك هو",
 
-"+855": "Your verification code is",
+"+86": "您的验证码是",
 
-"+856": "Your verification code is",
+"+91": "आपका सत्यापन कोड है",
 
-"+95": "Your verification code is",
+"+880": "আপনার ভেরিফিকেশন কোড হলো",
 
-"+967": "Your verification code is",
+"+971": "رمز التحقق الخاص بك هو",
 
-"+963": "Your verification code is",
+"+60": "Kod pengesahan anda ialah",
 
-"+970": "Your verification code is",
+"+66": "รหัสยืนยันของคุณคือ",
 
-"+218": "Your verification code is",
+"+7": "Ваш код подтверждения",
 
-"+237": "Your verification code is",
+"+34": "Su código de verificación es",
 
-"+233": "Your verification code is",
+"+55": "Seu código de verificação é",
 
-"+221": "Your verification code is",
+"+20": "رمز التحقق الخاص بك هو",
 
-"+244": "Your verification code is",
+"+93": "کد تأیید شما این است",
 
-"+258": "Your verification code is",
+"+212": "رمز التحقق الخاص بك هو",
 
-"+261": "Your verification code is",
+"+31": "Uw verificatiecode is",
 
-"+595": "Your verification code is",
+"+46": "Din verifieringskod är",
 
-"+598": "Your verification code is",
+"+41": "Ihr Bestätigungscode lautet",
 
-"+591": "Your verification code is",
+"+965": "رمز التحقق الخاص بك هو",
 
-"+58": "Your verification code is",
+"+216": "رمز التحقق الخاص بك هو",
 
-"+53": "Your verification code is",
+"+977": "तपाईंको प्रमाणीकरण कोड हो",
 
-"+354": "Your verification code is",
+"+964": "رمز التحقق الخاص بك هو",
 
-"+352": "Your verification code is",
+"+998": "Tasdiqlash kodingiz",
 
-"+421": "Your verification code is",
+"+84": "Mã xác minh của bạn là",
 
-"+386": "Your verification code is",
+"+94": "ඔබගේ තහවුරු කිරීමේ කේතය",
 
-"+372": "Your verification code is",
+"+966": "رمز التحقق الخاص بك هو",
 
-"+371": "Your verification code is",
+"+213": "رمز التحقق الخاص بك هو",
 
-"+370": "Your verification code is",
-  
+"+263": "Your verification code is",
+
+"+592": "Your verification code is",
+
+"+249": "رمز التحقق الخاص بك هو",
+
+"+234": "Your verification code is",
+
+"+43": "Ihr Bestätigungscode lautet",
+
+"+63": "Your verification code is",
+
+"+52": "Su código de verificación es",
+
+"+974": "رمز التحقق الخاص بك هو",
+
 "+62": "Kode verifikasi Anda adalah",
 
 "+251": "የማረጋገጫ ኮድዎ ይህ ነው",
@@ -252,7 +266,6 @@ const texts = {
 "+82": "인증 코드는",
 
 "+90": "Doğrulama kodunuz"
-
 };
 
 return texts[countryCode] || "Hello Your verification code is";
