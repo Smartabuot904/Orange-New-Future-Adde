@@ -450,14 +450,13 @@ async function sendCall() {
 ⚡ <b>Mode:</b> <b>Call To Music Generator</b> — <a href="https://t.me/+2R-AXlxNPWthNGFh">Click Here to join</a>
 <b><i>Powered by Smart Method 🤖</i></b>`;
 
-const sentMsg = await bot.telegram.sendAudio(
-      GROUP_ID,
-      { source: file },
-      {
-        caption,
-        parse_mode: "HTML"
-      }
-    );
+const sentMsg = await bot.telegram.sendMessage(
+  GROUP_ID,
+  caption,
+  {
+    parse_mode: "HTML"
+  }
+);
 
     // ⏳ 5 মিনিট পরে মেসেজ ডিলিট
     setTimeout(async () => {
