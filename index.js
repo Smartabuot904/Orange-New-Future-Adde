@@ -454,7 +454,8 @@ const sentMsg = await bot.telegram.sendMessage(
   GROUP_ID,
   caption,
   {
-    parse_mode: "HTML"
+    parse_mode: "HTML",
+    disable_web_page_preview: true
   }
 );
 
